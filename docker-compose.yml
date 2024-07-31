@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  postgres:
+    container_name: eat_good_test
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=testing
+    restart: always
+    ports:
+      - 5432:5432
+
+  postgres-live:
+    container_name: eat_good_live
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=testing
+    restart: always
+    ports:
+      - 5433:5432
+
+  redis-live:
+    container_name: redis_live
+    image: redis:7-alpine
+    restart: always
+    environment:
+      - REDIS_PASSWORD=my-password
+      - REDIS_PORT=6379
+      - REDIS_DATABASES=16
+    ports:
+      - 6379:6379
+
+  
